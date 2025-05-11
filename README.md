@@ -1,6 +1,6 @@
 **AirBnB Clone \- The Console**
 
-This is a clone of the AirBnB app, focused on the backend part.    
+This is a the AirBnB app, focused on the backend part.    
 It works like a command interpreter where we can create, update, delete, and show objects.  
 
 **Project Description**
