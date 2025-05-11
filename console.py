@@ -51,27 +51,20 @@ class HBNBCommand(cmd.Cmd):
     ]
 
     def emptyline(self):
-        """
-        Handles empty line input
-        """
+        """Handles empty line input"""
         return False
 
     def do_EOF(self, arg):
-        """
-        EOF command to exit the program
-        """
+        """EOF command to exit the program"""
         print()
         return True
 
     def do_quit(self, arg):
-        """
-        Quit command to exit the program
-        """
+        """Quit command to exit the program"""
         return True
 
     def do_create(self, arg):
-        """
-        Creates a new instance of specified class
+        """Creates a new instance of specified class
         Usage: create <class_name>
         """
         commands = shlex.split(arg)
@@ -87,8 +80,7 @@ class HBNBCommand(cmd.Cmd):
         print(new_instance.id)
 
     def do_show(self, arg):
-        """
-        Shows string representation of an instance
+        """Shows string representation of an instance
         Usage: show <class_name> <id>
         """
         commands = shlex.split(arg)
@@ -106,8 +98,7 @@ class HBNBCommand(cmd.Cmd):
         print(objects.get(key, "** no instance found **"))
 
     def do_destroy(self, arg):
-        """
-        Deletes an instance based on class name and id
+        """Deletes an instance based on class name and id
         Usage: destroy <class_name> <id>
         """
         commands = shlex.split(arg)
@@ -129,8 +120,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_all(self, arg):
-        """
-        Prints all string representations of instances
+        """Prints all string representations of instances
         Usage: all or all <class_name>
         """
         objects = storage.all()
@@ -141,11 +131,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             print([str(obj) for key, obj in objects.items()
-                  if key.split('.')[0] == commands[0]])
+                 if key.split('.')[0] == commands[0]])
 
     def do_count(self, arg):
-        """
-        Counts instances of a class
+        """Counts instances of a class
         Usage: <class_name>.count()
         """
         objects = storage.all()
@@ -161,8 +150,7 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def do_update(self, arg):
-        """
-        Updates an instance with new attributes
+        """Updates an instance with new attributes
         Usage: update <class> <id> <attr_name> "<attr_value>"
                <class>.update(<id>, <attr_name>, <attr_value>)
                <class>.update(<id>, <dictionary>)
@@ -207,9 +195,7 @@ class HBNBCommand(cmd.Cmd):
             obj.save()
 
     def default(self, arg):
-        """
-        Handles alternative command syntax
-        """
+        """Handles alternative command syntax"""
         method_dict = {
             "all": self.do_all,
             "show": self.do_show,
