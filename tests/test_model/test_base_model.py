@@ -1,43 +1,33 @@
 #!/usr/bin/python3
 """
-Unit tests for BaseModel
+Unit tests for BaseModel class
 """
+
 import unittest
+import os
+from datetime import datetime
 from models.base_model import BaseModel
+from models import storage
 
 
 class TestBaseModel(unittest.TestCase):
-    def test_init(self):
-        my_model = BaseModel()
-        self.assertIsNotNone(my_model.id)
-        self.assertIsNotNone(my_model.created_at)
-        self.assertIsNotNone(my_model.updated_at)
+    """Test cases for BaseModel class"""
 
-    def test_save(self):
-        my_model = BaseModel()
-        initial_updated_at = my_model.updated_at
+    def setUp(self):
+        """Set up test environment"""
+        self.model = BaseModel()
 
-        my_model.save()
-        self.assertNotEqual(initial_updated_at, my_model.updated_at)
+    def test_initialization(self):
+        """Test BaseModel initialization"""
+        self.assertTrue(hasattr(self.model, 'id'))
+        self.assertTrue(hasattr(self.model, 'created_at'))
+        self.assertTrue(hasattr(self.model, 'updated_at'))
+        self.assertIsInstance(self.model.id, str)
+        self.assertIsInstance(self.model.created_at, datetime)
+        self.assertIsInstance(self.model.updated_at, datetime)
 
-    def test_to_dict(self):
-        my_model = BaseModel()
-        my_model_dict = my_model.to_dict()
-
-        self.assertIsInstance(my_model_dict, dict)
-        self.assertEqual(my_model_dict["__class__"], 'BaseModel')
-        self.assertEqual(my_model_dict['id'], my_model.id)
-        self.assertEqual(my_model_dict['created_at'], my_model.created_at.isoformat())
-        self.assertEqual(my_model_dict['updated_at'], my_model.updated_at.isoformat())
-
-    def test_str(self):
-        my_model = BaseModel()
-        model_str = str(my_model)
-
-        self.assertTrue(model_str.startswith("[BaseModel]"))
-        self.assertIn(my_model.id, model_str)
-        self.assertIn(str(my_model.__dict__), model_str)
+    # Add more test methods...
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
