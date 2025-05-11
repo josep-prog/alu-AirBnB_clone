@@ -2,8 +2,8 @@
 """
 Module for serializing and deserializing data
 """
+
 import json
-import os
 from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity
@@ -30,17 +30,14 @@ class FileStorage:
         """
         Sets in __objects the obj with key <obj class name>.id
         """
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[key] = obj
 
     def save(self):
         """
         Serializes __objects to the JSON file
         """
-        obj_dict = {}
-        for key, obj in FileStorage.__objects.items():
-            obj_dict[key] = obj.to_dict()
-        
+        obj_dict = {key: obj.to_dict() for key, obj in FileStorage.__objects.items()}
         with open(FileStorage.__file_path, 'w', encoding='utf-8') as f:
             json.dump(obj_dict, f)
 
@@ -68,5 +65,4 @@ class FileStorage:
         except FileNotFoundError:
             pass
         except json.JSONDecodeError:
-            print("** Warning: Invalid JSON in storage file **")
-            pass
+            print("Warning: Invalid JSON in storage file")
