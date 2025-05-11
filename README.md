@@ -1,6 +1,6 @@
 **AirBnB Clone \- The Console**
 
-This is a the AirBnB app, focused on the backend part.    
+This is the AirBnB app, focused on the backend part.    
 It works like a command interpreter where we can create, update, delete, and show objects.  
 
 **Project Description**
@@ -78,6 +78,6 @@ $ update BaseModel 1234-1234-1234 name "My\_Model"
         │   └── test\_base\_model.cpython-310.pyc  
         └── test\_base\_model.py
 
-AUTHOR : Joseph Nishimwe  
+AUTHOR : Joseph Nishimwe\<j.nishimwe@alustudent.com\>  
 Email: [j.nishimwe@alustudent.com](mailto:j.nishimwe@alustudent.com)
 
